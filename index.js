@@ -1,12 +1,13 @@
 const express = require('express');
-const app = express();
 
 const { Endpoint } = require('./lib/constructors');
 const endpointsModule = require('./lib/endpoints');
 
-const endpointGroups = Object.keys(endpointsModule);
-
 const apiVersion = require('./package').version.split('.').slice(0, -1).join('.');
+const PORT = 3000;
+
+const app = express();
+const endpointGroups = Object.keys(endpointsModule);
 
 console.log('\nMOUNTING ENDPOINTS...\n');
 
@@ -23,9 +24,9 @@ endpointGroups.forEach((endpointGroupName) => {
 
 console.log('\nFinished mounting endpoints!\n');
 
-app.listen(3000, (err) => {
+app.listen(PORT, (err) => {
     if (err) {
         return console.log(err);
     }
-    console.log('app listening on 3000');
+    console.log(`API version ${apiVersion} started on port ${PORT}`);
 });
