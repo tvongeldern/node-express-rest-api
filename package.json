@@ -1,0 +1,15 @@
+{
+  "name": "node-express-api",
+  "version": "0.0.0",
+  "description": "Node API structure built on Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hi"
+  },
+  "author": "Tom von Geldern",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}
