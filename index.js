@@ -1,14 +1,19 @@
+// EXPRESS SETUP
 const express = require('express');
+const app = express();
 
+app.use(require('body-parser').json());
+
+// IMPORTING ENDPOINTS
 const { Endpoint } = require('./lib/constructors');
 const endpointsModule = require('./lib/endpoints');
 
-const apiVersion = require('./package').version.split('.').slice(0, -1).join('.');
+// DECLARING CONSTANTS
 const PORT = 3000;
-
-const app = express();
+const apiVersion = require('./package').version.split('.').slice(0, -1).join('.');
 const endpointGroups = Object.keys(endpointsModule);
 
+// MOUNTING ENDPOINTS
 console.log('\nMOUNTING ENDPOINTS...\n');
 
 endpointGroups.forEach((endpointGroupName) => {
@@ -24,9 +29,10 @@ endpointGroups.forEach((endpointGroupName) => {
 
 console.log('\nFinished mounting endpoints!\n');
 
+// BOOTING API
 app.listen(PORT, (err) => {
     if (err) {
         return console.log(err);
     }
-    console.log(`API version ${apiVersion} started on port ${PORT}`);
+    console.log(`\nAPI version ${apiVersion} started on port ${PORT}\n`);
 });
