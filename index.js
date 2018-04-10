@@ -5,7 +5,8 @@ const { Endpoint } = require('./lib/constructors');
 const endpointsModule = require('./lib/endpoints');
 
 const endpointGroups = Object.keys(endpointsModule);
-const apiVersion = '0.0';
+
+const apiVersion = require('./package').version.split('.').slice(0, -1).join('.');
 
 console.log('\nMOUNTING ENDPOINTS...\n');
 
