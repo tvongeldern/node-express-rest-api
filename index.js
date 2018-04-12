@@ -23,7 +23,7 @@ endpointGroups.forEach((endpointGroupName) => {
         const name = `${endpointGroupName}/${endpointName}`;
         const endpointModule = endpoints[endpointName];
         const endpoint = new Endpoint({...endpointModule, name });
-        app[endpoint.method](`/${apiVersion}/${name}`, endpoint.handler);
+        app[endpoint.method](`/${apiVersion}/${name}${endpoint.reference ? '/:reference' : ''}`, endpoint.handler);
     });
 });
 
