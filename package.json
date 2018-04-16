@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack",
-    "server": "npm run build && node server"
+    "server": "npm run build && node ./dist/server"
   },
   "author": "Tom von Geldern",
   "license": "ISC",

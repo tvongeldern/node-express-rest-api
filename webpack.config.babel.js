@@ -1,7 +1,7 @@
 export default {
-    entry: __dirname + '/index.js',
+    entry: `${__dirname}/index.js`,
     output: {
-        path: __dirname,
+        path: `${__dirname}/dist`,
         filename: 'server.js',
     },
     mode: 'development', // To preserve stack traces for error messages
