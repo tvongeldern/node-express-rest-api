@@ -1,25 +1,28 @@
 // EXPRESS SETUP
-const express = require('express');
+import express from 'express';
+import bodyParser from 'body-parser'
 const app = express();
-
-app.use(require('body-parser').json());
+app.use(bodyParser.json());
 
 // IMPORTING ENDPOINTS
-const { Endpoint } = require('./lib/constructors');
-const endpointsModule = require('./lib/endpoints');
+import { Endpoint } from 'constructors';
+import * as endpointsModule from 'endpoints';
 
 // DECLARING CONSTANTS
+import packageJson from './package';
 const PORT = 3000;
-const apiVersion = require('./package').version.split('.').slice(0, -1).join('.');
+const apiVersion = packageJson.version.split('.').slice(0, -1).join('.');
 const endpointGroups = Object.keys(endpointsModule);
 
 // MOUNTING ENDPOINTS
 console.log('\nMOUNTING ENDPOINTS...\n');
 
 endpointGroups.forEach((endpointGroupName) => {
+    console.log(endpointGroupName);
     const endpoints = endpointsModule[endpointGroupName];
     const endpointNames = Object.keys(endpoints);
     endpointNames.forEach((endpointName) => {
+        console.log(endpointName);
         const name = `${endpointGroupName}/${endpointName}`;
         const endpointModule = endpoints[endpointName];
         const endpoint = new Endpoint({...endpointModule, name });
