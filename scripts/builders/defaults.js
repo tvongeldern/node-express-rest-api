@@ -26,10 +26,10 @@ function controller({ name }) {
 }
 
 const argsMap = {
-    GET: 'data, reference, session',
-    PUT: 'data, reference, session',
-    POST: 'data, session',
-    DELETE: 'reference, session',
+    GET: 'data, reference',
+    PUT: 'data, reference',
+    POST: 'data',
+    DELETE: 'reference',
 };
 
 function endpoint({ name, method }) {

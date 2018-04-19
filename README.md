@@ -21,11 +21,10 @@ Endpoint handlers will take in arguments in a de-structured object. This object 
 
 `data`: Depending on the request method, this is either the request body (PUT, POST) or the request query (GET)
 `reference`: This is the param appended to the endpoint. Not available for POST requests, can be toggled for GET requests by adding/removing `reference` field to the module exports
-`session`: This is the logged in user from the request session (not configured yet)
 
 # Running example API
 After pulling the repository down and installing the dependencies, you can start up the example API as-is using `npm start`
 
 In your browser, you can hit endpoint `http://localhost:3000/0.0/wing-ding/hello-world?query=true&rest=AWESOME`
 
-You should get a response from the endpoint and see the query logged in your console.
+You should get a response from the endpoint and see the query data logged in your console.
