@@ -1,3 +1,6 @@
+// TOP-LEVEL IMPORTS
+import urlSlug from 'url-slug';
+
 // EXPRESS SETUP
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -24,7 +27,7 @@ endpointGroups.forEach((endpointGroupName) => {
 	const endpoints = endpointsModule[endpointGroupName];
 	const endpointNames = Object.keys(endpoints);
 	endpointNames.forEach((endpointName) => {
-		const name = `${endpointGroupName}/${endpointName}`;
+		const name = `${urlSlug(endpointGroupName)}/${urlSlug(endpointName)}`;
 		const endpointModule = endpoints[endpointName];
 		const endpoint = new Endpoint({ ...endpointModule, name });
 		app[endpoint.method](`/${apiVersion}/${name}${endpoint.reference ? '/:reference' : ''}`, endpoint.handler);
