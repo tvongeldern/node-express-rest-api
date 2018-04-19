@@ -1,18 +1,13 @@
-// TOP-LEVEL IMPORTS
+// Dependencies
 import urlSlug from 'url-slug';
-
-// EXPRESS SETUP
 import express from 'express';
 import bodyParser from 'body-parser';
-const app = express();
-app.use(bodyParser.json());
 
-// IMPORTING ENDPOINTS
 import { Endpoint } from 'constructors';
 import * as endpointsModule from 'endpoints';
-
-// DECLARING CONSTANTS
 import packageJson from './package';
+
+// Declaring constants
 const PORT = 3000;
 const apiVersion = packageJson.version
 	.split('.')
@@ -20,7 +15,11 @@ const apiVersion = packageJson.version
 	.join('.');
 const endpointGroups = Object.keys(endpointsModule);
 
-// MOUNTING ENDPOINTS
+// Express setup
+const app = express();
+app.use(bodyParser.json());
+
+// Mounting endpoints
 console.log('\nMOUNTING ENDPOINTS...\n');
 
 endpointGroups.forEach((endpointGroupName) => {
@@ -36,7 +35,7 @@ endpointGroups.forEach((endpointGroupName) => {
 
 console.log('\nFinished mounting endpoints!\n');
 
-// BOOTING API
+// Starting API
 app.listen(PORT, (err) => {
 	if (err) {
 		return console.log(err);
