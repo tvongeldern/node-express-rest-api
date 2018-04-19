@@ -20,16 +20,25 @@ function model({ name }) {
 function controller({ name }) {
     const controllerName = camelcase(name);
     return [
-        `import {  } from 'models';\n`,
+        `import {  } from 'models';`,
         `export default function ${controllerName} () {\n\n}`,
-    ].join('');
+    ].join('\n\n');
 }
+
+const argsMap = {
+    GET: 'data, reference, session',
+    PUT: 'data, reference, session',
+    POST: 'data, session',
+    DELETE: 'reference, session',
+};
 
 function endpoint({ name, method }) {
     const endpointName = camelcase(name);
     return [
-        `import {  } from 'models';\n`,
-    ].join('');
+        `import {  } from 'controllers';`,
+        `function ${endpointName}({ ${argsMap[method]} }) {\n\n}`,
+        `export default {\n\tmethod: '${method}',\n\thandler: ${endpointName},\n${method === 'GET' ? '\treference: true,\n' : ''}};`,
+    ].join('\n\n');
 }
 
 module.exports = { model, controller, endpoint };

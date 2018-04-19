@@ -7,7 +7,9 @@
     "build": "node_modules/.bin/webpack",
     "start": "npm run build && node ./dist/server",
     "prettier": "./node_modules/.bin/prettier --write --config .prettierrc \"{**,lib/**,lib/**/**, lib/**/**/**}.js\"",
-    "create-group": "node ./scripts/create-group"
+    "create-group": "node ./scripts/create-group",
+    "create-controller": "node ./scripts/create-controller",
+    "create-endpoint": "node ./scripts/create-endpoint"
   },
   "pre-commit": [
     "prettier"
