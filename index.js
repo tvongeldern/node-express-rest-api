@@ -22,6 +22,24 @@ app.use(bodyParser.json());
 // Mounting endpoints
 console.log('\nMOUNTING ENDPOINTS...\n');
 
+function getReferenceName(endpoint) {
+	const { reference, method } = endpoint;
+	if (['put', 'delete'].includes(method)) {
+		// Defaults to 'reference' for puts and deletes, since they always have a param
+		return `/:${reference || 'reference'}`;
+	}
+	if (reference && typeof reference === 'string') {
+		// sets named param
+		return `/:${reference}`;
+	}
+	if (reference) {
+		// Defaults to 'reference' if reference is true but not a string
+		return '/:reference';
+	}
+	return '';
+}
+
+// Mounts endpoints to URLs based on convention {api version}/{endpoint group}/{endpoint name}/{param if applicable}
 endpointGroups.forEach((endpointGroupName) => {
 	const endpoints = endpointsModule[endpointGroupName];
 	const endpointNames = Object.keys(endpoints);
@@ -29,11 +47,9 @@ endpointGroups.forEach((endpointGroupName) => {
 		const name = `${urlSlug(endpointGroupName)}/${urlSlug(endpointName)}`;
 		const endpointModule = endpoints[endpointName];
 		const endpoint = new Endpoint({ ...endpointModule, name });
-		app[endpoint.method](`/${apiVersion}/${name}${endpoint.reference ? '/:reference' : ''}`, endpoint.handler);
+		app[endpoint.method](`/${apiVersion}/${name}${getReferenceName(endpoint)}`, endpoint.handler);
 	});
 });
-
-console.log('\nFinished mounting endpoints!\n');
 
 // Starting API
 app.listen(PORT, (err) => {

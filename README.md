@@ -25,6 +25,6 @@ Endpoint handlers will take in arguments in a de-structured object. This object 
 # Running example API
 After pulling the repository down and installing the dependencies, you can start up the example API as-is using `npm start`
 
-In your browser, you can hit endpoint `http://localhost:3000/0.0/wing-ding/hello-world?query=true&rest=AWESOME`
+In your browser, you can hit endpoint `http://localhost:3000/0.0/wing-ding/hello-world/my-param-value?myQuery=awesome&cameoRules=true`
 
 You should get a response from the endpoint and see the query data logged in your console.
