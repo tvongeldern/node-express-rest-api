@@ -3,4 +3,6 @@ Elegant solution for error handling
     - Helpful error messages
     - Preserve stack traces
 
-Write README
+CORS
+
+Extend documentation

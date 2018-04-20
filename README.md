@@ -20,7 +20,7 @@ To build a new group: `npm run create-group`
 Endpoint handlers will take in arguments in a de-structured object. This object will have several attributes, based on the request's METHOD
 
 `data`: Depending on the request method, this is either the request body (PUT, POST) or the request query (GET)
-`reference`: This is the param appended to the endpoint. Not available for POST requests, can be toggled for GET requests by adding/removing `reference` field to the module exports
+`reference`: This is the param appended to the endpoint. Not available for POST requests, required for PUT and DELETE, can be toggled for GET requests by adding/removing `reference` field to the module exports
 
 # Running example API
 After pulling the repository down and installing the dependencies, you can start up the example API as-is using `npm start`

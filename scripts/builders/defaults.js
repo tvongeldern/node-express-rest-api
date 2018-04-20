@@ -12,8 +12,8 @@ function model({ name }) {
         `const ${schemaName} = new Schema({\n\n});\n\n`,
         `const publicFields = {\n\n};\n\n`,
         `const adminFields = {\n\t...publicFields,\n};\n\n`,
-        `export default {\n\tModel: ${schemaName},\n\tfields: {\n\t\t`,
-        `public: publilcFields,\n\t\tadmin: adminFields,\n\t},\n};`,
+        `export default {\n\tSchema: ${schemaName},\n\tfields: {\n\t\t`,
+        `public: publicFields,\n\t\tadmin: adminFields,\n\t},\n};`,
     ].join('');
 }
 
