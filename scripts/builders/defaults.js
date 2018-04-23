@@ -21,7 +21,7 @@ function controller({ name }) {
     const controllerName = camelcase(name);
     return [
         `import {  } from 'models';`,
-        `export default function ${controllerName} () {\n\n}`,
+        `export default function ${controllerName}() {\n\n}`,
     ].join('\n\n');
 }
 
